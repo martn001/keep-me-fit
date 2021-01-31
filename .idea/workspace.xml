@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2cf64f71-7cda-4b0b-af22-136b89d55c40" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/deploy.sh" beforeDir="false" afterPath="$PROJECT_DIR$/deploy.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/css/app.10216385.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/css/chunk-vendors.e6c9555e.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/js/chunk-vendors.25100770.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/js/chunk-vendors.25100770.js.map" beforeDir="false" />
-    </list>
+    <list default="true" id="2cf64f71-7cda-4b0b-af22-136b89d55c40" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,14 +9,6 @@
   </component>
   <component name="ComposerSettings">
     <execution />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="JavaScript File" />
-        <option value="Vue Single File Component" />
-      </list>
-    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -32,40 +18,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectId" id="1npX62GFqkNlYedEftSzUvsiDFG" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectViewState">
-    <option name="hideEmptyMiddlePackages" value="true" />
-    <option name="showLibraryContents" value="true" />
-  </component>
   <component name="PropertiesComponent">
-    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
-    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.detected.package.tslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="nodejs_package_manager_path" value="npm" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\src\keep-me-fit" />
-      <recent name="C:\src\keep-me-fit\.github\workflows" />
-      <recent name="C:\src\keep-me-fit\src\views" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\src\keep-me-fit" />
-      <recent name="C:\src\keep-me-fit\public" />
-      <recent name="C:\src\keep-me-fit\src\application\enums" />
-      <recent name="C:\src\keep-me-fit\src\router" />
-      <recent name="C:\src\keep-me-fit\src" />
     </key>
   </component>
   <component name="RunManager">
@@ -83,8 +45,6 @@
     <recent_temporary>
       <list>
         <item itemvalue="Shell Script.deploy.sh" />
-        <item itemvalue="Shell Script.deploy.sh" />
-        <item itemvalue="Shell Script.deploy.sh" />
       </list>
     </recent_temporary>
   </component>
@@ -92,54 +52,6 @@
     <configuration />
   </component>
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="2cf64f71-7cda-4b0b-af22-136b89d55c40" name="Default Changelist" comment="" />
-      <created>1612087826998</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1612087826998</updated>
-      <workItem from="1612087828844" duration="15420000" />
-    </task>
-    <task id="LOCAL-00001" summary="wip">
-      <created>1612105412085</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1612105412085</updated>
-    </task>
-    <task id="LOCAL-00002" summary="wip">
-      <created>1612107326069</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1612107326069</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Displaying homepage">
-      <created>1612107823317</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1612107823317</updated>
-    </task>
-    <option name="localTasksCounter" value="4" />
     <servers />
-  </component>
-  <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="2" />
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="wip" />
-    <MESSAGE value="Displaying homepage" />
-    <option name="LAST_COMMIT_MESSAGE" value="Displaying homepage" />
-  </component>
-  <component name="WindowStateProjectService">
-    <state x="624" y="108" key="CommitChangelistDialog2" timestamp="1612107822419">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="624" y="108" key="CommitChangelistDialog2/78.0.1842.1080/1920.0.1920.1040@78.0.1842.1080" timestamp="1612107822419" />
-    <state x="591" y="273" key="Vcs.Push.Dialog.v2" timestamp="1612107825157">
-      <screen x="78" y="0" width="1842" height="1080" />
-    </state>
-    <state x="591" y="273" key="Vcs.Push.Dialog.v2/78.0.1842.1080/1920.0.1920.1040@78.0.1842.1080" timestamp="1612107825157" />
   </component>
 </project>
