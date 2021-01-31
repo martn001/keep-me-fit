@@ -13,8 +13,8 @@ export default {
       // TODO: Name should be unique
       state.workouts.push(workout);
     },
-    removeWorkout(state, name) {
-      state.workouts = state.workouts.filter(workout => workout.name !== name);
+    removeWorkout(state, id) {
+      state.workouts = state.workouts.filter(workout => workout.id !== id);
     },
     updateLocalStorage(state) {
       localStorage.setItem(LOCALSTORAGE_WORKOUT_NAME, JSON.stringify(state.workouts));
@@ -57,9 +57,9 @@ export default {
       context.commit('setWorkouts', []);
       context.commit('clearLocalStorage');
     },
-    // Remove workout based on name
-    removeWorkout(context, workoutName) {
-      context.commit('removeWorkout', workoutName);
+    // Remove workout based on id
+    removeWorkout(context, workoutId) {
+      context.commit('removeWorkout', workoutId);
       context.commit('updateLocalStorage');
     },
   },

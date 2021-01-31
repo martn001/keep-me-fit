@@ -1,5 +1,5 @@
-import dayjs from '../../plugins/dayjs.js';
-import Workout from 'src/application/models/Workout.js';
+import dayjs from '@/plugins/dayjs.js';
+import Workout from '@/application/models/Workout.js';
 
 export default class Training {
   constructor(id, workout) {
@@ -10,6 +10,7 @@ export default class Training {
 
     this.currentProgress = workout.beginnersGoal;
     this.amountSuccessfulTraining = 0;
+    this.workoutId = workout.id;
 
     // When workout has been last performed
     this.lastPerformed = dayjs().format('YYYY-MM-DD 00:00');
