@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <!--<v-app-bar
+    <v-app-bar
       app
       color="primary"
       dark
@@ -28,7 +28,7 @@
       <v-spacer></v-spacer>
 
       <span>Keep me fit!</span>
-    </v-app-bar>-->
+    </v-app-bar>
 
     <v-main class="background-layout">
       <router-view/>
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <style scoped>
-.background-layout {
+/*.background-layout {
   background-image: linear-gradient(to right bottom, #fffcf4 20%, #42ff2b7d 60%, #17e40a70 20%)
-}
+}*/
 </style>
