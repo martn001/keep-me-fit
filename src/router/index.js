@@ -9,7 +9,7 @@ const router = new VueRouter({
     {
       path: '',
       name: 'home',
-      component: require('../views/Test.vue').default,
+      component: require('../views/Home.vue').default,
     },
   ],
 });
