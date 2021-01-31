@@ -1,11 +1,15 @@
+set -e # stop on error
+
+echo bulid client ...
 npm run build
 
-cd dist
-
-git init
-git add -A
-git commit -m 'deploy'
-
-git push -f git@github.com:martn001/keep-me-fit.git master:gh-pages
-
-cd -
+echo check out branch gh-pages ...
+git checkout -b gh-pages
+echo add client-dist folder
+git add -f client-dist
+echo commit changes
+git commit -m "deploy to gh-pages"
+echo push to remote gh-pages
+git push origin `git subtree split --prefix client-dist`:gh-pages --force
+echo checkout branch master
+git checkout master
