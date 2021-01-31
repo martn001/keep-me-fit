@@ -1,5 +1,4 @@
 import dayjs from '@/plugins/dayjs.js';
-
 const LOCALSTORAGE_PROGRESS_NAME = 'progress';
 
 export default {

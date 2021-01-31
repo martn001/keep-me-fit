@@ -37,17 +37,42 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+import Workouts from '@/data/Workouts.js';
+
 export default {
   name: 'App',
-
   data: () => ({
     //
   }),
+  computed: {
+    ...mapGetters('Workout', ['getWorkouts', 'getLocalStorage']),
+  },
+  created() {
+    this.fetchWorkouts(this.getLocalStorage);
+
+    if (this.getWorkouts.length === 0) {
+      console.log('Load new workouts');
+      this.seedWorkouts();
+    } else {
+      console.log('Nothing happend');
+    }
+
+    console.log('Result is', localStorage.getItem('workouts'));
+  },
+  methods: {
+    ...mapActions('Workout', ['fetchWorkouts', 'createWorkout']),
+    seedWorkouts() {
+      for (let x = 0; x < Workouts.length; x++) {
+        this.createWorkout(Workouts[x]);
+      }
+    },
+  },
 };
 </script>
 
 <style scoped>
-/*.background-layout {
+/*.background-layout { @/plugins/dayjs.js
   background-image: linear-gradient(to right bottom, #fffcf4 20%, #42ff2b7d 60%, #17e40a70 20%)
 }*/
 </style>

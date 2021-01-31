@@ -34,14 +34,12 @@ export default {
   },
   actions: {
     // Fetch workouts from localStorage and update the state of workouts
-    fetchWorkouts(context) {
-      const workouts = this.getLocalStorage();
-
-      if (workouts == null) {
+    fetchWorkouts(context, localStorageWorkouts) {
+      if (localStorageWorkouts == null) {
         context.commit('setWorkouts', []);
         context.commit('updateLocalStorage');
       } else {
-        context.commit('setWorkouts', workouts);
+        context.commit('setWorkouts', localStorageWorkouts);
       }
     },
     // Adding a new Workout to all existing
