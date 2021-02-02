@@ -15,7 +15,7 @@ export default {
     removeWorkout(state, id) {
       state.workouts = state.workouts.filter(workout => workout.id !== id);
     },
-    updateLocalStorage(state) {
+    updateWorkouts(state) {
       localStorage.setItem(LOCALSTORAGE_WORKOUT_NAME, JSON.stringify(state.workouts));
     },
     clearLocalStorage() {
@@ -27,7 +27,7 @@ export default {
       return state.workouts ? state.workouts : [];
     },
     hasWorkouts: state => state.workouts && state.workouts.length > 0,
-    getLocalStorage: () => {
+    getLocalStorageWorkouts: () => {
       return JSON.parse(localStorage.getItem(LOCALSTORAGE_WORKOUT_NAME));
     },
   },
@@ -36,7 +36,7 @@ export default {
     fetchWorkouts(context, localStorageWorkouts) {
       if (localStorageWorkouts == null) {
         context.commit('setWorkouts', []);
-        context.commit('updateLocalStorage');
+        context.commit('updateWorkouts');
       } else {
         context.commit('setWorkouts', localStorageWorkouts);
       }
@@ -50,7 +50,7 @@ export default {
 
       // After adding a new workout, the localstorage should be updated
       context.commit('addWorkout', workout);
-      context.commit('updateLocalStorage');
+      context.commit('updateWorkouts');
     },
     // Clear all cookies
     deleteWorkouts(context) {
@@ -60,7 +60,7 @@ export default {
     // Remove workout based on id
     removeWorkout(context, workoutId) {
       context.commit('removeWorkout', workoutId);
-      context.commit('updateLocalStorage');
+      context.commit('updateWorkouts');
     },
   },
 };

@@ -1,5 +1,11 @@
 <template>
-  <v-btn width="120px" height="120px" outlined :to="{name: routeName}" color="primary" class="mb-3 white">
+  <v-btn width="120px"
+         height="120px"
+         outlined
+         :to="{name: routeName}"
+         color="primary"
+         class="mb-3 white"
+         :disabled="disabled">
     <slot/>
   </v-btn>
 </template>
@@ -11,6 +17,10 @@ export default {
     routeName: {
       type: String,
       required: true,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
   },
 };

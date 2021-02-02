@@ -9,8 +9,8 @@ export default class Workout {
     this.amountRaise = amountRaise;
     this.name = name;
     this.description = description;
-    this.Type = workoutType;
-    this.Unit = workoutUnit;
+    this.type = workoutType;
+    this.unit = workoutUnit;
 
     /*this.repeat = repeat;
     this.breakDuration = breakDuration;*/

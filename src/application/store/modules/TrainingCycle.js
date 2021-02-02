@@ -24,7 +24,7 @@ export default {
     removeTodaySchedule(state) {
       state.todaySchedule = null;
     },
-    updateLocalStorage(state) {
+    updateProgress(state) {
       localStorage.setItem(LOCALSTORAGE_PROGRESS_NAME, JSON.stringify(state.progress));
     },
     clearLocalStorage() {
@@ -42,20 +42,18 @@ export default {
       return state.progress.filter(training => dayjs()
         .diff(dayjs(training.lastPerformed), 'days') > 2);
     },
-    getLocalStorage: () => {
+    getLocalStorageProgress: () => {
       return JSON.parse(localStorage.getItem(LOCALSTORAGE_PROGRESS_NAME));
     },
   },
   actions: {
     // Fetch workouts from localStorage and update the state of workouts
-    fetchProgress(context) {
-      const progress = this.getLocalStorage();
-
-      if (progress == null) {
+    fetchProgress(context, localStorageProgress) {
+      if (localStorageProgress == null) {
         context.commit('setProgress', []);
-        context.commit('updateLocalStorage');
+        context.commit('updateProgress');
       } else {
-        context.commit('setProgress', progress);
+        context.commit('setProgress', localStorageProgress);
       }
     },
     // Adding a new Training to all existing
@@ -64,7 +62,7 @@ export default {
 
       // After adding a new workout, the localstorage should be updated
       context.commit('addTraining', training);
-      context.commit('updateLocalStorage');
+      context.commit('updateProgress');
     },
     // Clear all progress
     deleteProgress(context) {
@@ -74,7 +72,7 @@ export default {
     // Remove training based on id
     removeProgressOfTraining(context, trainingId) {
       context.commit('removeTraining', trainingId);
-      context.commit('updateLocalStorage');
+      context.commit('updateProgress');
     },
   },
 };

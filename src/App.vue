@@ -3,7 +3,7 @@
     <TheMainMenu/>
 
     <v-main style="background-color: #cce0ff">
-      <router-view/>
+      <RouterView/>
     </v-main>
 
     <WorkoutsLoader/>
