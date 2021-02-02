@@ -1,20 +1,28 @@
 import dayjs from '@/plugins/dayjs.js';
+
 const LOCALSTORAGE_PROGRESS_NAME = 'progress';
 
 export default {
   namespaced: true,
   state: {
     progress: null,
+    todaySchedule: null,
   },
   mutations: {
     setProgress(state, progress) {
       state.progress = progress;
+    },
+    setTodaySchedule(state, todaySchedule) {
+      state.todaySchedule = todaySchedule;
     },
     addTraining(state, training) {
       state.progress.push(training);
     },
     removeTraining(state, id) {
       state.progress = state.progress.filter(training => training.id !== id);
+    },
+    removeTodaySchedule(state) {
+      state.todaySchedule = null;
     },
     updateLocalStorage(state) {
       localStorage.setItem(LOCALSTORAGE_PROGRESS_NAME, JSON.stringify(state.progress));
@@ -24,12 +32,15 @@ export default {
     },
   },
   getters: {
-    getProgress: state => {
-      return state.progress ? state.progress : [];
-    },
-    getWorkoutFromPastTwoDays: state => {
+    getProgress: state => state.progress ? state.progress : [],
+    getTodaySchedule: state => state.todaySchedule,
+    getLatestWorkouts: state => {
       return state.progress.filter(training => dayjs()
         .diff(dayjs(training.lastPerformed), 'days') <= 2);
+    },
+    getOlderWorkouts: state => {
+      return state.progress.filter(training => dayjs()
+        .diff(dayjs(training.lastPerformed), 'days') > 2);
     },
     getLocalStorage: () => {
       return JSON.parse(localStorage.getItem(LOCALSTORAGE_PROGRESS_NAME));

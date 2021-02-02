@@ -10,7 +10,6 @@ export default {
       state.workouts = workouts;
     },
     addWorkout(state, workout) {
-      // TODO: Name should be unique
       state.workouts.push(workout);
     },
     removeWorkout(state, id) {
@@ -25,9 +24,9 @@ export default {
   },
   getters: {
     getWorkouts: state => {
-      // TODO: Probably unnecessary
       return state.workouts ? state.workouts : [];
     },
+    hasWorkouts: state => state.workouts && state.workouts.length > 0,
     getLocalStorage: () => {
       return JSON.parse(localStorage.getItem(LOCALSTORAGE_WORKOUT_NAME));
     },
@@ -44,7 +43,10 @@ export default {
     },
     // Adding a new Workout to all existing
     createWorkout(context, workout) {
-      if (context.state.workouts == null) this.fetchWorkouts(context);
+      // need localStorageWorkouts
+      //if (context.state.workouts == null) this.fetchWorkouts(context);
+
+      if (context.state.workouts.some(w => w.id === workout.id)) return;
 
       // After adding a new workout, the localstorage should be updated
       context.commit('addWorkout', workout);

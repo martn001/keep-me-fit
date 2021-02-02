@@ -1,25 +1,29 @@
 <template>
-  <v-container class="fill-height">
-    <v-row class="text-center" align="center" justify="center">
-      <v-col>
-        <v-btn large outlined color="primary" class="ma-4">
-          Training van vandaag
-        </v-btn>
-        <v-btn large outlined color="primary" class="ma-4">
-          Extra training
-        </v-btn>
-        <v-btn large outlined color="primary" class="ma-4">
-          Maak een nieuwe oefening
-        </v-btn>
-      </v-col>
-    </v-row>
-  </v-container>
-
+  <page-layout>
+    <navigation-button route-name="today">Vandaag</navigation-button>
+    <navigation-button route-name="test">Overzicht</navigation-button>
+    <navigation-button route-name="test">Vrije keuze</navigation-button>
+    <navigation-button route-name="test">test</navigation-button>
+  </page-layout>
 </template>
 
 <script>
+import NavigationButton from '@/components/home/NavigationButton.vue';
+import PageLayout from '@/components/PageLayout.vue';
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   name: 'Home',
+  components: { PageLayout, NavigationButton },
+  data: () => ({
+    //
+  }),
+  computed: {
+    ...mapGetters('Workout', ['getWorkouts', 'getLocalStorage']),
+  },
+  methods: {
+    ...mapActions('Workout', ['fetchWorkouts']),
+  },
 };
 </script>
 
