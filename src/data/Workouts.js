@@ -3,7 +3,7 @@ import { WorkoutType } from '@/application/enums/Workout.js';
 import Workout from '../application/models/Workout.js';
 
 export default [
-  new Workout(1, 'Air Bicycle', 25, 80, 4, WorkoutType.BELLY, UnitType.EXERCISES, 'Breng je linker elleboog naar rechterbeen knie en vervoglens andersom. Één oefening is aar beide kanten uithalen.'),
+  new Workout(1, 'Air Bicycle', 25, 80, 4, WorkoutType.BELLY, UnitType.EXERCISES, 'Breng je linker elleboog naar rechterbeen knie en vervolgens andersom. Één oefening is aar beide kanten uithalen.'),
   new Workout(2, 'Planken', 120, 300, 20, WorkoutType.BELLY, UnitType.SECONDS, 'Planken'),
   new Workout(3, 'Opdrukken', 40, 150, 5, WorkoutType.ARMS, UnitType.EXERCISES, 'Opdrukken'),
   new Workout(4, 'Plank to push up', 30, 80, 5, WorkoutType.BELLY, UnitType.EXERCISES, 'Neem de plankhouding aan en klim met je handen een voor een op naar de opdrukhouding ofwel voorligsteun. Wanneer je in deze positie bent druk je één keer op. Ga weer terug in plankhouding en herhaal.'),

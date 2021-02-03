@@ -26,10 +26,15 @@ export default {
     getWorkouts: state => {
       return state.workouts ? state.workouts : [];
     },
-    hasWorkouts: state => state.workouts && state.workouts.length > 0,
-    getLocalStorageWorkouts: () => {
-      return JSON.parse(localStorage.getItem(LOCALSTORAGE_WORKOUT_NAME));
+    getWorkoutTypes: state => {
+      let distinct = [];
+      for (let x = 0; x < state.workouts.length; x++) {
+        if (!distinct.some(w => w.type === state.workouts[x].type)) distinct.push(state.workouts[x]);
+      }
+      return distinct;
     },
+    hasWorkouts: state => state.workouts && state.workouts.length > 0,
+    getLocalStorageWorkouts: () => JSON.parse(localStorage.getItem(LOCALSTORAGE_WORKOUT_NAME)),
   },
   actions: {
     // Fetch workouts from localStorage and update the state of workouts

@@ -12,12 +12,12 @@ const router = new VueRouter({
       component: require('../views/Home.vue').default,
     },
     {
-      path: 'test',
+      path: '/test',
       name: 'test',
       component: require('../views/Test.vue').default,
     },
     {
-      path: 'vandaag',
+      path: '/vandaag',
       name: 'today',
       component: require('../views/Today.vue').default,
     },

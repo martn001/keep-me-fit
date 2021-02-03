@@ -5,9 +5,9 @@ const UnitType = {
 };
 
 const UnitName = {
-  [UnitType.SECONDS]: 'Seconde',
-  [UnitType.MINUTES]: 'Minuut',
-  [UnitType.EXERCISES]: 'Oefening',
+  [UnitType.SECONDS]: 'secondes',
+  [UnitType.MINUTES]: 'minuten',
+  [UnitType.EXERCISES]: 'oefeningen',
 };
 
 export { UnitType, UnitName };
