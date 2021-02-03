@@ -1,6 +1,6 @@
 <template>
   <div v-if="selectedAbleTrainings">
-    <workout v-for="training in selectedAbleTrainings" :key="training.id" :workout="training.workout">
+    <workout v-for="training in selectedAbleTrainings" :key="training.id" :workout="training.workout" :current-goal="training.currentProgress">
       <v-btn small color="grey darken-1" text class="float-right" @click="rejectedTrainings.push(training.id)">
         Overslaan
       </v-btn>

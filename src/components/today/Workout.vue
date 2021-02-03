@@ -1,10 +1,14 @@
 <template>
-  <v-alert border="left" color="primary" :outlined="outlined" class="py-2" v-if="workout != null && workout.name != null">
+  <v-alert border="left"
+           color="primary"
+           :outlined="outlined"
+           class="py-2"
+           v-if="workout != null && workout.name != null">
     <h2 class="title primary--text">{{workout.name}}</h2>
     <table class="workout-display">
       <tr>
         <td>Goal:</td>
-        <td>{{workout.beginnersGoal}} {{unitTypes[workout.unit]}}</td>
+        <td>{{currentGoal}} {{unitTypes[workout.unit]}}</td>
       </tr>
     </table>
     <p v-if="detailed">{{workout.description}}</p>
@@ -29,6 +33,10 @@ export default {
     workout: {
       type: Object,
       required: true,
+    },
+    currentGoal: {
+      type: Number,
+      required: false,
     },
   },
   computed: {
