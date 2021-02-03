@@ -29,7 +29,7 @@
                style="left: 5px; position: absolute">
           Sluiten
         </v-btn>
-        <v-btn color="success" v-bind="attrs" @click="seedWorkouts" text class="ml-8">
+        <v-btn color="success" v-bind="attrs" @click="seed" text class="ml-8">
           Accepteer
         </v-btn>
       </template>
@@ -41,6 +41,7 @@
 
 <script>
 import Workouts from '@/data/Workouts.js';
+import Training from '@/application/models/Training.js';
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
@@ -58,15 +59,25 @@ export default {
   },
   methods: {
     ...mapActions('Workout', ['fetchWorkouts', 'createWorkout']),
-    ...mapActions('TrainingCycle', ['fetchProgress']),
-    seedWorkouts() {
+    ...mapActions('TrainingCycle', ['fetchProgress', 'createTraining']),
+    seed() {
       this.showSeedWorkoutsOption = false;
 
+      this.seedWorkouts();
+
+      this.seedHistory();
+
+      this.handleDialog();
+    },
+    seedWorkouts() {
       for (let x = 0; x < Workouts.length; x++) {
         this.createWorkout(Workouts[x]);
       }
-
-      this.handleDialog();
+    },
+    seedHistory() {
+      for (let x = 0; x < Workouts.length; x++) {
+        this.createTraining(new Training(x + 1, Workouts[x]));
+      }
     },
     handleDialog() {
       this.dialog = true;

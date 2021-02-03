@@ -1,19 +1,16 @@
 import dayjs from '@/plugins/dayjs.js';
-import Workout from '@/application/models/Workout.js';
 
 export default class Training {
   constructor(id, workout) {
     this.id = id;
+    this.workoutId = workout.id;
     this.workout = workout;
 
-    this.validateWorkout();
-
-    this.currentProgress = workout.beginnersGoal;
     this.amountSuccessfulTraining = 0;
-    this.workoutId = workout.id;
+    this.currentProgress = workout.beginnersGoal;
 
     // When workout has been last performed
-    this.lastPerformed = dayjs().format('YYYY-MM-DD 00:00');
+    this.lastPerformed = null;
   }
 
   // Perform training
@@ -35,19 +32,12 @@ export default class Training {
       this.currentProgress = this.workout.beginnersGoal > nextProgress ? this.workout.beginnersGoal : nextProgress;
     }
 
-    this.lastPerformed = dayjs().format('YYYY-MM-DD 00:00');
+    this.lastPerformed = dayjs()
+      .format('YYYY-MM-DD 00:00');
   }
 
   // Check if training has finished
   hasTrainingFinished() {
     return this.currentProgress >= this.workout.endGoal;
-  }
-
-  // Check if workout is valid
-  validateWorkout() {
-    if (typeof this.workout !== typeof new Workout()) {
-      console.error('Workout is niet van het juiste type');
-      console.log(this.workout);
-    }
   }
 }

@@ -35,12 +35,12 @@ export default {
     getProgress: state => state.progress ? state.progress : [],
     getTodaySchedule: state => state.todaySchedule,
     getLatestWorkouts: state => {
-      return state.progress.filter(training => dayjs()
-        .diff(dayjs(training.lastPerformed), 'days') <= 2);
+      return state.progress.filter(training => training.lastPerformed != null &&
+        dayjs().diff(dayjs(training.lastPerformed), 'days') <= 2);
     },
     getOlderWorkouts: state => {
-      return state.progress.filter(training => dayjs()
-        .diff(dayjs(training.lastPerformed), 'days') > 2);
+      return state.progress.filter(training => training.lastPerformed == null ||
+        dayjs().diff(dayjs(training.lastPerformed), 'days') > 2);
     },
     getLocalStorageProgress: () => {
       return JSON.parse(localStorage.getItem(LOCALSTORAGE_PROGRESS_NAME));
@@ -58,7 +58,7 @@ export default {
     },
     // Adding a new Training to all existing
     createTraining(context, training) {
-      if (context.state.progress == null) this.fetchProgress(context);
+      if (context.state.progress.some(w => w.id === training.id)) return;
 
       // After adding a new workout, the localstorage should be updated
       context.commit('addTraining', training);

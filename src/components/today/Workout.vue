@@ -1,5 +1,5 @@
 <template>
-  <v-alert border="left" color="primary" :outlined="outlined" class="py-2">
+  <v-alert border="left" color="primary" :outlined="outlined" class="py-2" v-if="workout != null && workout.name != null">
     <h2 class="title primary--text">{{workout.name}}</h2>
     <table class="workout-display">
       <tr>
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import Workouts from '@/data/Workouts.js';
 import { UnitName } from '@/application/enums/Units.js';
 
 export default {
@@ -27,11 +26,12 @@ export default {
       type: Boolean,
       default: true,
     },
+    workout: {
+      type: Object,
+      required: true,
+    },
   },
   computed: {
-    workout() {
-      return Workouts[0];
-    },
     unitTypes: () => UnitName,
   },
 };

@@ -12,7 +12,8 @@
       <v-stepper-step step="2">Bevestig twee oefeningen</v-stepper-step>
 
       <v-stepper-content step="2">
-       <Workout/>
+        <SelectableWorkouts :workout-type="selectedWorkoutType"/>
+
         <!-- <v-card
           color="grey lighten-1"
           class="mb-12"
@@ -53,11 +54,14 @@
 
 <script>
 import SelectableWorkoutTypes from '@/components/today/SelectableWorkoutTypes.vue';
-import Workout from '@/components/today/Workout.vue';
+import SelectableWorkouts from '@/components/today/SelectableWorkouts.vue';
 
 export default {
   name: 'Today',
-  components: { Workout, SelectableWorkoutTypes },
+  components: {
+    SelectableWorkouts,
+    SelectableWorkoutTypes,
+  },
   data: () => ({
     stepper: 1,
     selectedWorkoutType: null,
