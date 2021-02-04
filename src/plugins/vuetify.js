@@ -11,7 +11,7 @@ export default new Vuetify({
   theme: {
     themes: {
       light: {
-        accent: '#97ce2d',
+        accent: '#fb7aaa',
       },
     },
   },
