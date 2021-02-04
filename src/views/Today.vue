@@ -12,16 +12,15 @@
       <v-stepper-step step="2">Bevestig twee oefeningen</v-stepper-step>
 
       <v-stepper-content step="2">
-        <SelectableWorkouts :workout-type="selectedWorkoutType"/>
+        <SelectableWorkouts :workout-type="selectedWorkoutType" @change="getSelectedWorkouts"/>
 
-        <!-- <v-card
-          color="grey lighten-1"
-          class="mb-12"
-          height="200px"
-        ></v-card>-->
         <v-divider class="mb-4"/>
         <v-btn text @click="stepper--">Terug</v-btn>
-        <v-btn color="primary" @click="stepper = 3" class="float-right">Verder</v-btn>
+        <v-btn color="primary"
+               @click="stepper = 3"
+               class="float-right"
+               :disabled="!selectedWorkouts || !selectedWorkouts.length">Verder
+        </v-btn>
       </v-stepper-content>
 
       <v-stepper-step step="3">Training</v-stepper-step>
@@ -65,9 +64,14 @@ export default {
   data: () => ({
     stepper: 1,
     selectedWorkoutType: null,
+    selectedWorkouts: [],
     //
   }),
-  methods: {},
+  methods: {
+    getSelectedWorkouts(workouts) {
+      this.selectedWorkouts = workouts;
+    },
+  },
   created() {
     //console.log(this.allRecommendedWorkoutTypes);
   },

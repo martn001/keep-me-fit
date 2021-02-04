@@ -11,7 +11,7 @@
         <td>{{currentGoal}} {{unitTypes[workout.unit]}}</td>
       </tr>
     </table>
-    <p v-if="detailed">{{workout.description}}</p>
+    <p v-if="highDetails">{{workout.description}}</p>
     <slot/>
   </v-alert>
 </template>
@@ -26,9 +26,9 @@ export default {
       type: Boolean,
       default: true,
     },
-    detailed: {
+    highDetails: {
       type: Boolean,
-      default: true,
+      default: false,
     },
     workout: {
       type: Object,
