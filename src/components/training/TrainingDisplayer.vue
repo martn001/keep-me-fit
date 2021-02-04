@@ -4,30 +4,76 @@
     width="500"
     fullscreen
     hide-overlay
+    scrollable
     transition="dialog-bottom-transition"
   >
     <template #activator="{ on, attrs }">
       <v-btn color="accent" dark v-bind="attrs" v-on="on" x-large>
-        <v-icon color="white" class="mr-3">fa-play</v-icon> Begin de training
+        <v-icon color="white" class="mr-3">fa-play</v-icon>
+        Begin de training
       </v-btn>
     </template>
 
-    <v-card>
-      <v-card-title class="accent white--text">
-        Training
-      </v-card-title>
+    <!-- Header of dialog -->
+    <v-card tile>
+      <v-toolbar flat dark color="primary" max-height="160px">
+        <v-btn icon dark @click="dialog = false">
+          <v-icon>fa-times</v-icon>
+        </v-btn>
+        <v-spacer></v-spacer>
+        <!-- TODO: More space for extra options -->
+        <!--<v-menu bottom
+          right
+          offset-y
+        >
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn
+              dark
+              icon
+              v-bind="attrs"
+              v-on="on"
+            >
+              <v-icon>mdi-dots-vertical</v-icon>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              v-for="(item, i) in items"
+              :key="i"
+              @click="() => {}"
+            >
+              <v-list-item-title>{{ item.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>-->
 
-      <v-card-text>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-        pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-        laborum.
+        <template #extension>
+          <h2 class="display-1 mt-8 ml-10">
+            <span class="text-capitalize">{{dayName}},</span>
+            <br/>
+            {{dayDetails}}
+          </h2>
+        </template>
+      </v-toolbar>
+
+      <!-- Display workouts -->
+      <v-card-text class="pt-6 pb-0">
+        <workout v-for="training in selectedTrainings"
+                 :key="training.id"
+                 :workout="training.workout"
+                 high-details
+                 :current-goal="training.currentProgress">
+          <v-btn color="accent darken-1" class="float-right" @click="startTraining(training)">
+            Start
+          </v-btn>
+        </workout>
       </v-card-text>
 
+      <!-- Actions after training has been succeed -->
       <v-card-actions class="justify-center">
-        <v-btn color="primary" @click="dialog = false" :disabled="false" x-large>
-          <v-icon color="white" class="mr-3">fa-flag</v-icon> Eindig training
+        <v-btn color="accent" @click="dialog = false" :disabled="!finished" x-large>
+          <v-icon color="white" class="mr-3">fa-flag</v-icon>
+          Voltooi je training
         </v-btn>
       </v-card-actions>
     </v-card>
@@ -35,15 +81,34 @@
 </template>
 
 <script>
+import Workout from '@/components/today/Workout.vue';
+import dayjs from '@/plugins/dayjs.js';
+
 export default {
   name: 'TrainingDisplayer',
+  components: { Workout },
   data: () => ({
     dialog: false,
+    finished: false,
+    currentDate: dayjs(),
   }),
   props: {
     selectedTrainings: {
       type: Array,
       default: () => [],
+    },
+  },
+  computed: {
+    dayName() {
+      return this.currentDate.format('dddd');
+    },
+    dayDetails() {
+      return this.currentDate.format('d MMMM');
+    },
+  },
+  methods: {
+    startTraining(training) {
+      console.log(training);
     },
   },
 };

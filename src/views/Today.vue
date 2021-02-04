@@ -28,7 +28,7 @@
       <v-stepper-content step="3">
         <v-sheet width="100%" height="200px">
           <v-row align="center" justify="center" class="fill-height">
-            <TrainingDisplayer/>
+            <TrainingDisplayer :selected-trainings="selectedWorkouts"/>
           </v-row>
         </v-sheet>
 
