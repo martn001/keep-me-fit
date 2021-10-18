@@ -8,7 +8,7 @@
     transition="dialog-bottom-transition"
   >
     <template #activator="{ on, attrs }">
-      <v-btn color="accent" dark v-bind="attrs" v-on="on" x-large>
+      <v-btn color="accent" dark v-bind="attrs" v-on="on" x-large @click="setupTraining">
         <v-icon color="white" class="mr-3">fa-play</v-icon>
         Begin de training
       </v-btn>
@@ -58,7 +58,7 @@
 
       <!-- Display workouts -->
       <v-card-text class="pt-6 pb-0">
-        <workout v-for="training in selectedTrainings"
+        <workout v-for="training in selected"
                  :key="training.id"
                  :workout="training.workout"
                  high-details
@@ -67,6 +67,8 @@
             Start
           </v-btn>
         </workout>
+        <SuccessfulWorkout/>
+        <FailedWorkout/>
       </v-card-text>
 
       <!-- Actions after training has been succeed -->
@@ -81,21 +83,33 @@
 </template>
 
 <script>
-import Workout from '@/components/today/Workout.vue';
+import Workout from '@/components/workout/Workout.vue';
 import dayjs from '@/plugins/dayjs.js';
+import FailedWorkout from '@/components/workout/Failed.vue';
+import SuccessfulWorkout from '@/components/workout/Successful.vue';
 
 export default {
   name: 'TrainingDisplayer',
-  components: { Workout },
+  components: {
+    FailedWorkout,
+    SuccessfulWorkout,
+    Workout,
+  },
   data: () => ({
     dialog: false,
     finished: false,
     currentDate: dayjs(),
+    selected: [],
   }),
   props: {
     selectedTrainings: {
       type: Array,
       default: () => [],
+    },
+  },
+  watch: {
+    selectedTrainings() {
+      this.fillSelected();
     },
   },
   computed: {
@@ -106,9 +120,19 @@ export default {
       return this.currentDate.format('d MMMM');
     },
   },
+  created() {
+    this.fillSelected();
+  },
   methods: {
     startTraining(training) {
       console.log(training);
+    },
+    fillSelected() {
+      this.selected = this.selectedTrainings;
+    },
+    setupTraining() {
+      console.log('test');
+      // TODO: save trainings in history, but set as not succeed
     },
   },
 };

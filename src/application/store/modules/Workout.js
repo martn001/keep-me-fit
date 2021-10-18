@@ -34,7 +34,7 @@ export default {
       return distinct;
     },
     hasWorkouts: state => state.workouts && state.workouts.length > 0,
-    getLocalStorageWorkouts: () => JSON.parse(localStorage.getItem(LOCALSTORAGE_WORKOUT_NAME)),
+    storageWorkouts: () => JSON.parse(localStorage.getItem(LOCALSTORAGE_WORKOUT_NAME)),
   },
   actions: {
     // Fetch workouts from localStorage and update the state of workouts

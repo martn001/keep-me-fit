@@ -12,7 +12,7 @@
 </template>
 
 <script>
-import Workout from '@/components/today/Workout.vue';
+import Workout from '@/components/workout/Workout.vue';
 import dayjs from '@/plugins/dayjs.js';
 import { mapGetters } from 'vuex';
 import DefaultSettings from '@/data/DefaultSettings.js';

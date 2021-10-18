@@ -1,6 +1,7 @@
 import dayjs from '@/plugins/dayjs.js';
 
 const LOCALSTORAGE_PROGRESS_NAME = 'progress';
+const LOCALSTORAGE_TODAY_SCHEDULE_NAME = 'today_schedule';
 
 export default {
   namespaced: true,
@@ -23,12 +24,17 @@ export default {
     },
     removeTodaySchedule(state) {
       state.todaySchedule = null;
+      localStorage.removeItem(LOCALSTORAGE_TODAY_SCHEDULE_NAME);
     },
     updateProgress(state) {
       localStorage.setItem(LOCALSTORAGE_PROGRESS_NAME, JSON.stringify(state.progress));
     },
+    updateTodaySchedule(state) {
+      localStorage.setItem(LOCALSTORAGE_TODAY_SCHEDULE_NAME, JSON.stringify(state.progress));
+    },
     clearLocalStorage() {
       localStorage.removeItem(LOCALSTORAGE_PROGRESS_NAME);
+      localStorage.removeItem(LOCALSTORAGE_TODAY_SCHEDULE_NAME);
     },
   },
   getters: {
@@ -42,18 +48,30 @@ export default {
       return state.progress.filter(training => training.lastPerformed == null ||
         dayjs().diff(dayjs(training.lastPerformed), 'days') > 2);
     },
-    getLocalStorageProgress: () => {
+    storageProgress: () => {
+      return JSON.parse(localStorage.getItem(LOCALSTORAGE_PROGRESS_NAME));
+    },
+    storageTodaySchedule: () => {
       return JSON.parse(localStorage.getItem(LOCALSTORAGE_PROGRESS_NAME));
     },
   },
   actions: {
     // Fetch workouts from localStorage and update the state of workouts
-    fetchProgress(context, localStorageProgress) {
-      if (localStorageProgress == null) {
+    fetchProgress(context, storage) {
+      if (storage == null) {
         context.commit('setProgress', []);
         context.commit('updateProgress');
       } else {
-        context.commit('setProgress', localStorageProgress);
+        context.commit('setProgress', storage);
+      }
+    },
+    // Fetch trainings from localStorage and update the state of workouts
+    fetchTodaySchedule(context, storage) {
+      if (storage == null) {
+        context.commit('setTodaySchedule', []);
+        context.commit('updateTodaySchedule');
+      } else {
+        context.commit('setTodaySchedule', storage);
       }
     },
     // Adding a new Training to all existing

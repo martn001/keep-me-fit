@@ -54,8 +54,8 @@ export default {
     dialogTimeout: null,
   }),
   computed: {
-    ...mapGetters('Workout', ['hasWorkouts', 'getLocalStorageWorkouts']),
-    ...mapGetters('TrainingCycle', ['getLocalStorageProgress']),
+    ...mapGetters('Workout', ['hasWorkouts', 'storageWorkouts']),
+    ...mapGetters('TrainingCycle', ['storageProgress']),
   },
   methods: {
     ...mapActions('Workout', ['fetchWorkouts', 'createWorkout']),
@@ -92,8 +92,8 @@ export default {
     clearTimeout(this.dialogTimeout);
   },
   mounted() {
-    this.fetchWorkouts(this.getLocalStorageWorkouts);
-    this.fetchProgress(this.getLocalStorageProgress);
+    this.fetchWorkouts(this.storageWorkouts);
+    this.fetchProgress(this.storageProgress);
 
     this.showSeedWorkoutsOption = !this.hasWorkouts;
   },
